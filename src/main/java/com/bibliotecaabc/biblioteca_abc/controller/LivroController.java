@@ -1,28 +1,27 @@
-package controller;
+package com.bibliotecaabc.biblioteca_abc.controller;
 
-import model.Biblioteca;
-import org.apache.coyote.Response;
+import com.bibliotecaabc.biblioteca_abc.model.Livro;
+import com.bibliotecaabc.biblioteca_abc.service.LivroService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import service.BibliotecaService;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/biblioteca")
-public class BibliotecaController {
+@RequestMapping("/livro")
+public class LivroController {
 
-    private final BibliotecaService bibliotecaService;
+    private final LivroService livroService;
 
-    public BibliotecaController(BibliotecaService bibliotecaService) {
-        this.bibliotecaService = bibliotecaService;
+    public LivroController(LivroService livroService) {
+        this.livroService = livroService;
     }
 
     @GetMapping("/findAll")
-    public ResponseEntity<List<Biblioteca>> findAll() {
+    public ResponseEntity<List<Livro>> findAll() {
         try {
-            var result = bibliotecaService.findAll();
+            var result = livroService.findAll();
             return new ResponseEntity<>(result, HttpStatus.OK);
         } catch (Exception ex) {
             return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
@@ -30,9 +29,9 @@ public class BibliotecaController {
     }
 
     @PostMapping("/save")
-    public ResponseEntity<Biblioteca> save(@RequestBody Biblioteca biblioteca) {
+    public ResponseEntity<Livro> save(@RequestBody Livro livro) {
         try {
-            var result = bibliotecaService.save(biblioteca);
+            var result = livroService.save(livro);
             return new ResponseEntity<>(result, HttpStatus.CREATED);
         } catch (Exception ex) {
             return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
@@ -40,9 +39,9 @@ public class BibliotecaController {
     }
 
     @GetMapping("/findById/{id}")
-    public ResponseEntity<Biblioteca> findById(@PathVariable Integer id) {
+    public ResponseEntity<Livro> findById(@PathVariable Integer id) {
         try {
-            var result = bibliotecaService.findById(id);
+            var result = livroService.findById(id);
             return new ResponseEntity<>(result, HttpStatus.OK);
         } catch (Exception ex) {
             return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
@@ -52,7 +51,7 @@ public class BibliotecaController {
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<?> delete(@PathVariable Integer id) {
         try {
-            bibliotecaService.delete(id);
+            livroService.delete(id);
             return ResponseEntity.noContent().build();
         } catch (Exception ex) {
             return ResponseEntity.badRequest().build();
@@ -60,9 +59,9 @@ public class BibliotecaController {
     }
 
     @PutMapping("/update/{id}")
-    public ResponseEntity<Biblioteca> update(@PathVariable Integer id, @RequestBody Biblioteca bibliotecaUpdate) {
+    public ResponseEntity<Livro> update(@PathVariable Integer id, @RequestBody Livro livroUpdate) {
         try {
-            var result = bibliotecaService.update(id, bibliotecaUpdate);
+            var result = livroService.update(id, livroUpdate);
             return new ResponseEntity<>(result, HttpStatus.OK);
         } catch (Exception ex) {
             return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
