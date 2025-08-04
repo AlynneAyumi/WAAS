@@ -1,6 +1,6 @@
-package repository;
+package com.bibliotecaabc.biblioteca_abc.repository;
 
-import model.Biblioteca;
+import com.bibliotecaabc.biblioteca_abc.model.Biblioteca;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

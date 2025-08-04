@@ -1,11 +1,10 @@
-package controller;
+package com.bibliotecaabc.biblioteca_abc.controller;
 
-import model.Biblioteca;
-import org.apache.coyote.Response;
+import com.bibliotecaabc.biblioteca_abc.model.Biblioteca;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import service.BibliotecaService;
+import com.bibliotecaabc.biblioteca_abc.service.BibliotecaService;
 
 import java.util.List;
 

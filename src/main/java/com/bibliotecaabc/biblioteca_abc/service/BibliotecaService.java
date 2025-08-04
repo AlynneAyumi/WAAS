@@ -1,9 +1,9 @@
-package service;
+package com.bibliotecaabc.biblioteca_abc.service;
 
 import jakarta.persistence.EntityNotFoundException;
-import model.Biblioteca;
+import com.bibliotecaabc.biblioteca_abc.model.Biblioteca;
 import org.springframework.stereotype.Service;
-import repository.BibliotecaRepository;
+import com.bibliotecaabc.biblioteca_abc.repository.BibliotecaRepository;
 
 import java.util.List;
 
